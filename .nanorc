@@ -1,4 +1,5 @@
 ## Basic Settings ##
+
 set autoindent          " Automatically indent new lines based on the previous line
 set constantshow        " Always show the current cursor position
 set linenumbers         " Display line numbers in the margin
@@ -8,9 +9,11 @@ set tabsize 4           " Display tab characters as 4 spaces wide
 set tabstospaces        " Convert literal tab characters into spaces
 
 ## Valid Key Bindings ##
+
 bind ^Q exit main         " Bind Ctrl+Q to exit Nano
 bind ^S writeout main     " Bind Ctrl+S to save (write out file)
 bind ^K cut main           " Also bind Ctrl+K to cut text (duplicate binding if you prefer)
 
 ## Include additional nanorc files
+
 include "~/.nano/*.nanorc"
