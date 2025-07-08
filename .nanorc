@@ -1,19 +1,39 @@
-## Basic Settings ##
+## ==========================
+## BASIC SETTINGS
+## ==========================
 
-set autoindent          " Automatically indent new lines based on the previous line
-set constantshow        " Always show the current cursor position
-set linenumbers         " Display line numbers in the margin
-set mouse               " Enable mouse support
-set softwrap            " Soft-wrap long lines at word boundaries
-set tabsize 4           " Display tab characters as 4 spaces wide
-set tabstospaces        " Convert literal tab characters into spaces
+set autoindent         # Auto-indent new lines to match the previous line
+set constantshow       # Always show cursor position (line,col)
+set linenumbers        # Show line numbers
+set mouse              # Enable mouse support (click to move cursor)
+set smarthome          # Smart Home: toggle between start of line and first text
+set softwrap           # Wrap long lines at word boundaries
+set tabsize 4          # Tabs are 4 spaces wide
+set tabstospaces       # Convert typed tabs to spaces
 
-## Valid Key Bindings ##
+## ==========================
+## FILE BEHAVIOR
+## ==========================
 
-bind ^Q exit main         " Bind Ctrl+Q to exit Nano
-bind ^S writeout main     " Bind Ctrl+S to save (write out file)
-bind ^K cut main           " Also bind Ctrl+K to cut text (duplicate binding if you prefer)
+set historylog         # Enable search history
+# set backup             # Keep backups of files
+set noconvert          # Do not auto-convert file formats (Windows/macOS/Unix)
 
-## Include additional nanorc files
+## ==========================
+## KEY BINDINGS
+## ==========================
 
-include "~/.nano/*.nanorc"
+bind ^Q exit main           # Ctrl+Q: Quit
+bind ^S savefile main       # Ctrl+S: Save
+bind ^O insert main         # Ctrl+O: Insert file
+bind ^W cut main            # Ctrl+W: Cut (duplicate of ^K)
+bind ^K cut main            # Ctrl+K: Standard Nano cut
+bind ^U paste main          # Ctrl+U: Paste
+bind ^Y prevpage main       # Ctrl+Y: Page up
+bind ^V nextpage main       # Ctrl+V: Page down
+
+## ==========================
+## SYNTAX HIGHLIGHTING
+## ==========================
+
+include "~/.nano/*.nanorc"  # Load language-specific rules from this folder

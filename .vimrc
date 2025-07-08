@@ -38,6 +38,9 @@ Plug 'chrisbra/Colorizer'                        " Color highlighter
 Plug 'ryanoasis/vim-devicons'                    " File icons
 Plug 'lervag/vimtex'                             " LaTeX support (optional)
 
+" Auto Completion
+Plug 'neoclide/coc.nvim', {'branch': 'release'} " CoC for autocompletion
+
 call plug#end()
 
 " -----------------------------------------------------------------------------
@@ -94,9 +97,9 @@ set clipboard=unnamedplus " System clipboard
 " Key Mappings
 " -----------------------------------------------------------------------------
 let mapleader=","        " Leader key
-nnoremap <Leader>s :w<CR>  " Save
+nnoremap <Leader>s :w!<CR>  " Save
 nnoremap <Leader>q :q!<CR> " Quit
-nnoremap <Leader>wq :wq<CR>" Save & Quit
+nnoremap <Leader>wq :wq!<CR>" Save & Quit
 nnoremap <Leader>n :NERDTreeToggle<CR>  " Toggle NERDTree
 nnoremap <Leader>h :nohlsearch<CR>      " Clear search
 
@@ -108,6 +111,10 @@ nnoremap <C-l> <C-w>l
 
 " Markdown Preview
 nnoremap <Leader>mp :MarkdownPreviewToggle<CR>
+
+" Toggle Paste Mode
+nnoremap <Leader>p :set paste!<CR>       " Toggle paste mode (for external pasting)
+imap <Leader>p <C-o>:set paste!<CR>     " In insert mode, toggle and return to insert
 
 " -----------------------------------------------------------------------------
 " Plugin-specific Settings
@@ -128,6 +135,47 @@ let g:vim_markdown_folding_disabled = 1
 let g:markdown_fenced_languages = ['html', 'python', 'bash=sh']
 let g:mkdp_auto_start = 0
 let g:mkdp_auto_close = 1
+
+" CoC settings
+" Use <tab> for completion and navigate completion list
+inoremap <silent><expr> <TAB>
+      \ pumvisible() ? "\<C-n>" :
+      \ <SID>check_back_space() ? "\<TAB>" :
+      \ coc#refresh()
+inoremap <expr><S-TAB> pumvisible() ? "\<C-p>" : "\<S-TAB>"
+
+function! s:check_back_space() abort
+  let col = col('.') - 1
+  return !col || getline('.')[col - 1] =~ '\s'
+endfunction
+
+" Use <c-space> to trigger completion.
+if has('nvim')
+  inoremap <silent><expr> <c-space> coc#refresh()
+else
+  inoremap <silent><expr> <c-@> coc#refresh()
+endif
+
+" Use `gd` for go-to-definition, `gy` for go-to-type-definition, `gr` for go-to-references
+nmap <silent> gd <Plug>(coc-definition)
+nmap <silent> gy <Plug>(coc-type-definition)
+nmap <silent> gr <Plug>(coc-references)
+
+" Highlight the symbol under the cursor.
+autocmd CursorHold * silent call CocActionAsync('highlight')
+
+" Use K to show documentation in preview window
+nnoremap <silent> K :call <SID>show_documentation()<CR>
+
+function! s:show_documentation()
+  if (index(['vim','help'], &filetype) >= 0)
+    execute 'h '.expand('<cword>')
+  elseif (coc#rpc#ready())
+    call CocActionAsync('doHover')
+  else
+    execute '!' . &keywordprg . " " . expand('<cword>')
+  endif
+endfunction
 
 " -----------------------------------------------------------------------------
 " General Behavior
