@@ -1,7 +1,7 @@
 {
     "folders": [
         {
-            "path": ""
+            "path": "."
         }
     ],
     "settings": {
@@ -96,6 +96,7 @@
         // Spellchecker
         "cSpell.language": "en-GB",
         "cSpell.words": [
+
         ]
     }
 }
