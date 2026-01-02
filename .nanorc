@@ -2,38 +2,41 @@
 ## BASIC SETTINGS
 ## ==========================
 
-set autoindent         # Auto-indent new lines to match the previous line
-set constantshow       # Always show cursor position (line,col)
-set linenumbers        # Show line numbers
-set mouse              # Enable mouse support (click to move cursor)
-set smarthome          # Smart Home: toggle between start of line and first text
-set softwrap           # Wrap long lines at word boundaries
-set tabsize 4          # Tabs are 4 spaces wide
-set tabstospaces       # Convert typed tabs to spaces
+set autoindent              # Auto-indent new lines to match the previous line
+set constantshow            # Always show cursor position (line,col)
+set linenumbers             # Show line numbers
+set mouse                   # Enable mouse support (click to move cursor)
+set smarthome               # Smart Home: toggle between start of line and first text
+set softwrap                # Wrap long lines at word boundaries
+set tabsize 4               # Tabs are 4 spaces wide
+set tabstospaces            # Convert typed tabs to spaces
 
 ## ==========================
 ## FILE BEHAVIOR
 ## ==========================
 
-set historylog         # Enable search history
-# set backup             # Keep backups of files
-set noconvert          # Do not auto-convert file formats (Windows/macOS/Unix)
+set historylog          # Enable search history
+# set backup            # Keep backups of files
+set noconvert           # Do not auto-convert file formats (Windows/macOS/Unix)
 
 ## ==========================
 ## KEY BINDINGS
 ## ==========================
 
-bind ^Q exit main           # Ctrl+Q: Quit
-bind ^S savefile main       # Ctrl+S: Save
-bind ^O insert main         # Ctrl+O: Insert file
-bind ^W cut main            # Ctrl+W: Cut (duplicate of ^K)
-bind ^K cut main            # Ctrl+K: Standard Nano cut
-bind ^U paste main          # Ctrl+U: Paste
-bind ^Y prevpage main       # Ctrl+Y: Page up
-bind ^V nextpage main       # Ctrl+V: Page down
+bind ^Q exit main               # Ctrl+Q: Quit
+bind ^S savefile main           # Ctrl+S: Save
+bind ^O insert main             # Ctrl+O: Insert file
+bind ^F whereis main            # Ctrl+F: Find (Restore search since ^W is cut)
+bind ^W cut main                # Ctrl+W: Cut (duplicate of ^K)
+bind ^K cut main                # Ctrl+K: Standard Nano cut
+bind ^U paste main              # Ctrl+U: Paste
+bind ^Y prevpage main           # Ctrl+Y: Page up
+bind ^V nextpage main           # Ctrl+V: Page down
 
 ## ==========================
 ## SYNTAX HIGHLIGHTING
 ## ==========================
 
-include "~/.nano/*.nanorc"  # Load language-specific rules from this folder
+include "~/.nano/*.nanorc"     # Load language-specific rules from this folder
+
+## ==========================
